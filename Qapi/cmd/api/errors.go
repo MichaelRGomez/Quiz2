@@ -30,3 +30,13 @@ func (app *application) serverErrorResponse(w http.ResponseWriter, r *http.Reque
 	message := "the server encountered a problem and could not process the request"
 	app.errorResponse(w, r, http.StatusInternalServerError, message)
 }
+
+// If the int was too large for the server
+func (app *application) intTooLargeErrorResponse(w http.ResponseWriter, r *http.Request, err error) {
+	//logging the error
+	app.logError(r, err)
+
+	//Preparing a message with the error
+	message := err.Error()
+	app.errorResponse(w, r, http.StatusInternalServerError, message)
+}

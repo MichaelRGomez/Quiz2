@@ -3,6 +3,7 @@
 package main
 
 import (
+	"errors"
 	"net/http"
 )
 
@@ -11,11 +12,15 @@ func (app *application) makeRandomStringHandler(w http.ResponseWriter, r *http.R
 	//getting the int supplied using a helper function
 	userInt, err := app.readIntParam(r)
 	if err != nil {
-		app.logError(r, err)
+		app.serverErrorResponse(w, r, err)
 		return
 	}
 
 	//stopping the server from crash due to large number
+	if userInt > 9999 {
+		app.intTooLargeErrorResponse(w, r, errors.New("The int provided was too large for the server"))
+		return
+	}
 
 	//The int valid
 	randomString := app.generateRandomString(int(userInt))
