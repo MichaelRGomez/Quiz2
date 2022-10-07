@@ -47,7 +47,6 @@ func main() {
 		Addr:    fmt.Sprintf(":%d", cfg.port),
 		Handler: app.routes(),
 	}
-
 	//starting our server
 	logger.Printf("starting %s server on %s", cfg.env, srv.Addr)
 	err := srv.ListenAndServe()

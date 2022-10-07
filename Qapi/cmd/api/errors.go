@@ -21,6 +21,7 @@ func (app *application) errorResponse(w http.ResponseWriter, r *http.Request, st
 	}
 }
 
+// If the server was unable to process the request for some reason
 func (app *application) serverErrorResponse(w http.ResponseWriter, r *http.Request, err error) {
 	//logging the error
 	app.logError(r, err)
@@ -28,4 +29,9 @@ func (app *application) serverErrorResponse(w http.ResponseWriter, r *http.Reque
 	//Preparing a message with the error
 	message := "the server encountered a problem and could not process the request"
 	app.errorResponse(w, r, http.StatusInternalServerError, message)
+}
+
+// If the server was unable to process the int
+func (app *application) failedToParseInt(w http.ResponseWriter, r *http.Request, err error) {
+	app.errorResponse(w, r, http.StatusUnprocessableEntity, err)
 }
