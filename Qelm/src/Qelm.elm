@@ -25,7 +25,7 @@ viewIcon model =
     in
 
     div [class "detialed-icon"] [
-        span [class "material-icons md-48", onClick msg ][
+        span [class "material-icons md-50", onClick msg ][
             text buttonType
         ]
     ]

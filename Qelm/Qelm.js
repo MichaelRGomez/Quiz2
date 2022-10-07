@@ -5240,7 +5240,7 @@ var $author$project$Qelm$viewIcon = function (model) {
 				$elm$html$Html$span,
 				_List_fromArray(
 					[
-						$elm$html$Html$Attributes$class('material-icons md-48'),
+						$elm$html$Html$Attributes$class('material-icons md-50'),
 						$elm$html$Html$Events$onClick(msg)
 					]),
 				_List_fromArray(
